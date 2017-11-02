@@ -1,0 +1,25 @@
+{
+  "name": "teamproject2dev",
+  "version": "1.0.0",
+  "description": "Project 2",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Hello Team!! You can do it\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Skprose/teamproject2dev.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mysql",
+    "seuqlize"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Skprose/teamproject2dev/issues"
+  },
+  "homepage": "https://github.com/Skprose/teamproject2dev#readme"
+}
