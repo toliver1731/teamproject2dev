@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>
+Form 2
+</title>
+<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+<script src="semantic/dist/semantic.min.js"></script>
+</head>
+<body>
+    <script>
+          
+    </script>
+    <form class="ui form">
+        <h1 class="ui dividing header">Wish List Organizer</h1>
+
+
+        <div class="ui huge form">
+  <div class="two fields">
+    <div class="field">
+      <label>Family Member Name:</label>
+      <input placeholder="Family Member Name:" type="text">
+    </div>
+    <div class="field">
+      <label>Family Member ID:</label>
+      <input placeholder="Family Member ID:" type="text">
+    </div>
+  </div>
+
+
+        <div class="ui huge form">
+  <div class="two fields">
+    <div class="field">
+      <label>Family Member email:</label>
+      <input placeholder="Family Member email:" type="text">
+    </div>
+</div>
+    
+    <button class="ui primary button">
+  					Add More Members
+			</button>
+
+				<button class="ui primary button">
+  						Done
+				</button>
+					
+					<p></p>
+<div class="ui form">
+  <div class="field">
+    	<label>List of all family members</label>
+    <textarea></textarea>
+  </div>
+  
+</body>
+</html>
+
+
+        
