@@ -1,15 +1,6 @@
-<div id = "myacdet">
-    {{#each ulist}}
-
-        <p>Name: </p><p class = "htdispname"></p>{{this.fname}}<p class = "htdispname">{{this.lname}}</p>
-         <p>Email :</p><p id = "htdispemail">{{this.email}}</p>
-         <p>ID: </p><p id = "htdispid"></p>
-    {{/each}}
-</div>
-
 <div> My Wish List</div>
 <div id = "mywishlist">
-  {{#each wlist}}
+  {{#each vlist}}
             <div class = "row">
                     <div class = "col-lg-1">
                          <p>{{this.id}}</p>
@@ -27,7 +18,7 @@
                         <button data-id ="{{this.id}}" class ="delbtn btn btn-danger">Delete Item</button>
                     </div>
             </div>
-    {{/each}}
+        {{/each}}
 
 </div>
 <div class = "container">
@@ -45,8 +36,4 @@
                           </div>
                     </form>
               </div>
-</div>
-
-<div class = "container">
-      <button><a href = "">Return to Home Page</button>
 </div>
