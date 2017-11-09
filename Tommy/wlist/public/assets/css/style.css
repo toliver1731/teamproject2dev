@@ -1,0 +1,13 @@
+.jumbotron {
+	font-family: 'Pacifico', cursive;
+	text-align: center
+}
+
+body {
+	text-align: center;
+	font-family: 'Spirax', cursive;
+	background-image: url("/assets/img/background.jpg");
+   background-repeat: no-repeat;
+   background-size: cover;
+  
+    }
