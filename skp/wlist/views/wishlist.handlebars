@@ -1,4 +1,4 @@
-<div> My Wish Lsit</div>
+<div> My Wish List</div>
 <div id = "mywishlist">
   {{#each vlist}}
             <div class = "row">
@@ -6,13 +6,13 @@
                          <p>{{this.id}}</p>
                     </div>
                     <div class = "col-lg-3">
-                        <p>{{this.product_name}}</p>
+                        <text data-id ="{{this.id}}" >{{this.product_name}}</text>
                     </div>
                     <div class = "col-lg-5">
-                        <p>{{this.product_desc}}</p>
+                        <text data-id ="{{this.id}}" >{{this.product_desc}}</text>
                     </div>
                     <div class = "col-lg-3">
-                        <button data-id ="{{this.id}}" class ="updbtn btn btn-info">Delete Item</button>
+                        <button data-id ="{{this.id}}" class ="updbtn btn btn-info">Update List</button>
                     </div>
                     <div class = "col-lg-3">
                         <button data-id ="{{this.id}}" class ="delbtn btn btn-danger">Delete Item</button>
@@ -32,8 +32,8 @@
                                   <input id = "htproddesc" type = "text" name = "hthwdesc">
                                   <label>Enter Price:</label>
                                    <input id = "htprodprice" type = "text" name = "hthwdesc">
-                                 <button id ="prodaddbtn" class = "btn btn-success" type = "submit">Add Homework Details</button>
+                                 <button id ="prodaddbtn" class = "btn btn-success" type = "submit">Add to wish list</button>
                           </div>
                     </form>
               </div>
-        </div>
+</div>

@@ -12,7 +12,7 @@ $(function() {
         });   // end of on click
         $("#htlogin").on("click",function(event)
         {
-             event.preventDefault ;
+             event.preventDefault() ;
 
              var  email = $("#htsemail").val().trim();
              var  pword =  $("#htspwd").val().trim();
@@ -30,6 +30,8 @@ $(function() {
                                 }
                                 else {
                                   console.log("Ok succesfull login");
+                                  console.log("Res",response);
+                                  window.location = '/users/myaccount/' + response.id;
                                   /*
                                   $.ajax("users/myaccount",
                                           {type:"GET"}).then(function()
@@ -50,7 +52,7 @@ $("#prodaddbtn").on("click",function(event)
       console.log("jquery add");
        event.preventDefault();
        var newitem = {
-         userid : 1000,
+         userid : $("#htdispid").val().trim(),
          product_name: $("#htprodname").val().trim(),
          product_desc: $("#htproddesc").val().trim(),
          product_price : $("#htprodprice").val().trim()
@@ -67,7 +69,6 @@ $("#prodaddbtn").on("click",function(event)
            location.reload();
          }
        );
-
 });
 
 $(".updbtn").on("click",function(event)
@@ -119,7 +120,7 @@ $(".delbtn").on("click",function(event)
 function acexist()
 {
   console.log("acexist");
-    location.reload();
+    //location.reload();
     $("#ht-yesnoemail").text ="Account already exist for this Email Id. Please Enter New details!!!";
 }
 
@@ -198,7 +199,6 @@ function checkalreadyexist(email)
                 if (checkinput())
                 {
                   createaccount();
-
                 }
                 else {
                   acexist();
@@ -231,13 +231,14 @@ function createaccount()
 
                  console.log("Inserted Records",response.id);
                  var id = response.id;
+                 /*
                  $.ajax("/users/myaccount/"+id,
                          {type:"GET"}).then(function()
                          {
                             console.log("Account created - Mydashboard Page");
                          }
-                       );
-
+                       ); */
+                       window.location = '/users/myaccount/' + response.id;
                }
           ); //end ajax add
 

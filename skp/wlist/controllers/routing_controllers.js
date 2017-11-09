@@ -1,4 +1,5 @@
 const express = require("express");
+const exphbs = require("express-handlebars");
 const router = express.Router();
 const user = require("../models/userlogin_model.js");
 const wish = require("../models/wishlist_model.js");
@@ -17,12 +18,15 @@ router.get("/users/signin", function(req, res) {
 //My account
 router.get("/users/myaccount/:id", function(req, res) {
        var condition =
-        { userid : req.params.id };
+        { id : req.params.id };
        user.selectone(condition,function(data)
         {
-           res.render('myaccount',{ulist:data});
+           var criteria = { userid : req.params.id};
+           wish.selectone(criteria,function(records)
+            {
+             res.render('myaccount',{ulist:data, wlist:records});
+            });
         });
-
 });
 //Log in to the account
 router.get("/api/users/login/:email/:pword", function(req, res) {
@@ -38,9 +42,11 @@ router.get("/api/users/login/:email/:pword", function(req, res) {
              {
               console.log("Valid login");
 
-               res.render("myaccount",{ulist:result});
+               //res.render("myaccount",{ulist:result});
                 //res.status(200).end();
-               //res.json({id:result.id});
+                var resData = {id:result[0].id};
+                console.log(resData);
+               res.json(resData);
              }
              else {
                 console.log("Invalid Email password combination");
@@ -136,6 +142,7 @@ router.delete("/api/users/delete/:id", function(req, res) {
       }); // end of delete db call
 }); //end of delete route
 /* Wish List */
+/*
 router.get("/api/users/wishlist/",function(req,res) {
    wish.all(function(result) {
         console.log('Results from select one',result);
@@ -152,7 +159,7 @@ router.get("/api/users/wishlist/",function(req,res) {
           return res.status(404).end();
         }
     });
-  });
+  }); */
   router.delete("/api/users/wishlist/delete/:id", function(req, res) {
         var condition = "id = " + req.params.id + "user_id = "+req.body.uid;
         wish.delete(condition, function(result) {
@@ -187,6 +194,29 @@ router.get("/api/users/wishlist/",function(req,res) {
                   }
           }); // end of update
   }); //end of put route to update records
+  // Add Wish list
+  router.post("/api/users/wishlist/add", function(req, res) {
+        wish.create([
+          "userid","product_name","product_desc","product_price"
+        ], [
+          req.body.userid, req.body.product_name, req.body.product_desc,req.body.price
+        ], function(result) {
+               console.log('Results from create account',result);
+              if (result.affectedRows != 0)
+              {
+                console.log("Inserting wish list in table");
+                //res.render('userlogin', {ulist:data});
+                res.json({id:result.insertId})
+                //res.send(result.insertId);
+                //res.status(200).end();
+
+              }
+              else {
+                console.log("unable to add wishlist");
+                return res.status(404).end();
+              }
+         }); //end of create
+  }); // end of post route to add new user accounts
 /*
 router.get("/api/users/wishlist/:id",function(req,res) {
   var condition = { id : req.params.id};
