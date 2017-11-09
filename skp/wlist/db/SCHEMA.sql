@@ -48,6 +48,7 @@ CREATE TABLE usergroupproducts
 CREATE TABLE wishlist
 ( id INT NOT NULL AUTO_INCREMENT,
    userid INT NOT NULL,
+   product_name varchar(20) NOT NULL,
    product_desc VARCHAR(50) NOT NULL,
    product_price FLOAT,
    PRIMARY KEY(id),

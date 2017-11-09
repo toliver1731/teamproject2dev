@@ -28,8 +28,6 @@ var user = {
            orm.delete("userlogin", condition, function(res) {
              console.log('User login delete',res);
              cb(res);
-
-
            });
       },
       selectone:function(objColVals, cb)
