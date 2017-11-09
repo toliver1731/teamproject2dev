@@ -12,12 +12,12 @@ $(function() {
         });   // end of on click
         $("#htlogin").on("click",function(event)
         {
-             event.preventDefault ;
+             event.preventDefault() ;
 
              var  email = $("#htsemail").val().trim();
              var  pword =  $("#htspwd").val().trim();
 
-             console.log("inside ht login");
+             console.log("inside ht login",email);
              $.ajax("/api/users/login/"+email+"/"+pword,
                     {
                       type : "GET",
@@ -30,6 +30,8 @@ $(function() {
                                 }
                                 else {
                                   console.log("Ok succesfull login");
+                                  console.log("Res",response);
+                                  window.location = '/users/myaccount/' + response.id;
                                   /*
                                   $.ajax("users/myaccount",
                                           {type:"GET"}).then(function()
@@ -45,16 +47,81 @@ $(function() {
         }); // end on click;
 }); // end of main function
 
+$("#prodaddbtn").on("click",function(event)
+{
+      console.log("jquery add");
+       event.preventDefault();
+       var newitem = {
+         userid : $("#htdispid").val().trim(),
+         product_name: $("#htprodname").val().trim(),
+         product_desc: $("#htproddesc").val().trim(),
+         product_price : $("#htprodprice").val().trim()
+       };
+       // Send the POST request.
+       console.log('before ajax');
+       $.ajax("/api/users/wishlist/add", {
+         type : "POST",
+         data: newitem
+       }).then(
+         function() {
+           console.log("sending Inserted menu item");
+           // Reload the page to get the updated list
+           location.reload();
+         }
+       );
+});
+
+$(".updbtn").on("click",function(event)
+{
+            console.log("jquery del");
+          var id = $(this).data("id");
+          console.log('update in front end jquery id is',id);
+          var newwish =
+          {
+            pname: "i",
+            pdesc: "ss",
+            pprice: "23",
+            uid: "1000",
+
+          }
+          console.log('before ajax');
+          $.ajax("/api/users/wishlist/" + id, {
+            type: "PUT",
+            date : newwish
+          }).then(
+            function() {
+              console.log("sending update item request", id);
+              location.reload();
+            });
+
+
+
+});
+
+$(".delbtn").on("click",function(event)
+{
+        console.log("jquery del");
+      var id = $(this).data("id");
+      console.log('delete in front end jquery id is',id);
+
+      console.log('before ajax');
+      $.ajax("/api/users/wishlist/" + id, {
+        type: "DELETE",
+      }).then(
+        function() {
+          console.log("sending deleted  request", id);
+
+          location.reload();
+        }); // end of ajax
+
+
+}); //end delete button
 
 function acexist()
 {
-    $("#htuser_lname").val() = "";
-    $("#htuser_fname").val() = "";
-    $("#htemail").val() = "";
-    $("#htpassword").val() = "";
-    $("#htconfirmpassword").val() = "";
-    location.reload();
-    $("#ht-yesnoemail").text() ="Account already exist for this Email Id. Please Enter New details!!!";
+  console.log("acexist");
+    //location.reload();
+    $("#ht-yesnoemail").text ="Account already exist for this Email Id. Please Enter New details!!!";
 }
 
 function checkpassword()
@@ -132,7 +199,6 @@ function checkalreadyexist(email)
                 if (checkinput())
                 {
                   createaccount();
-
                 }
                 else {
                   acexist();
@@ -142,8 +208,7 @@ function checkalreadyexist(email)
              {
                console.log("User Account with this Email-Id already Exist");
                acexist();
-
-             }
+           }
       });
     //  return false;
 }
@@ -166,13 +231,14 @@ function createaccount()
 
                  console.log("Inserted Records",response.id);
                  var id = response.id;
+                 /*
                  $.ajax("/users/myaccount/"+id,
                          {type:"GET"}).then(function()
                          {
                             console.log("Account created - Mydashboard Page");
                          }
-                       );
-
+                       ); */
+                       window.location = '/users/myaccount/' + response.id;
                }
           ); //end ajax add
 
