@@ -1,0 +1,56 @@
+<h3>Account Details</h3>
+<div id = "myacdet">
+    {{#each ulist}}
+        <p><label id = "name">{{this.fname}} {{this.lname}}"></label></p>
+        <p><input id = "htdispid" type = "hidden" value = {{this.id}}><p>
+        <p><label>{{this.email}}</label></p>
+    {{/each}}
+</div>
+<div class = "container">
+      <button><a href = "/">Sign Out</a></button>
+</div>
+<div> My Wish List</div>
+<div id = "mywishlist">
+  {{#each wlist}}
+            <div class = "row">
+                  <!--
+                    <div class = "col-lg-1">
+                         <p>{{this.id}}</p>
+                    </div> -->
+                    <form>
+                          <div class = "col-lg-3">
+                              <input id="prdname-{{this.id}}" name="prdname-{{this.id}}" type="text" value="{{this.product_name}}" placeholder="{{this.product_name}}" />
+                          </div>
+                          <div class = "col-lg-3">
+                              <input id = "prddesc-{{this.id}}"  name = "prddesc-{{this.id}}" type ="text" value = "{{this.product_desc}}" placeholder="{{this.product_desc}}" />
+                          </div>
+                          <div class = "col-lg-2">
+                              <input id = "prdprice-{{this.id}}"  name = "prdprice-{{this.id}}" type ="text" value = "{{this.product_price}}" placeholder="{{this.product_price}}"/>
+                          </div>
+                          <div class = "col-lg-2">
+                              <button data-id ="{{this.id}}" class ="updbtn btn btn-info">Update List</button>
+                          </div>
+                          <div class = "col-lg-2">
+                              <button data-id ="{{this.id}}" class ="delbtn btn btn-danger">Delete Item</button>
+                          </div>
+                  </form>
+            </div>
+    {{/each}}
+
+</div>
+<div class = "container">
+              <h4>Add Wish List Details</h4>
+              <div class = "row">
+                    <form class = "create-form">
+                         <div class = "form-group">
+                                 <label>Product Name :</label>
+                                 <input id = "htprodname" type = "text" placeholder = "Product Name" name = "htsubname">
+                                 <label>Enter Description :</label>
+                                  <input id = "htproddesc" type = "text" placeholder = "Product Description" name = "hthwdesc">
+                                  <label>Enter Price:</label>
+                                   <input id = "htprodprice" type = "text" placeholder = "Enter Price" name = "hthwdesc">
+                                  <button id ="prodaddbtn" class = "btn btn-success" type = "submit">Add to wish list</button>
+                         </div>
+                    </form>
+              </div>
+</div>
